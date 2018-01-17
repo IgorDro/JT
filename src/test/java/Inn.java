@@ -266,13 +266,7 @@ public class Inn {
     String innText = inn.getAttribute("value");
     Assert.assertEquals("563565286576", innText);
   }
-  //Разбираемся с Git
-  @Test
-  public void Test10 (){
-    ChromeDriver driver = getChromeDriver();
-    Login( driver,"1111111111", "1111111111");
-    CreatePP(driver);
-  }
+
 
 
 
