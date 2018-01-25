@@ -3,6 +3,8 @@ package pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PP extends Page {
   @FindBy (xpath = "//div[contains(@class,'MenuFilters__menuFiltersItem--2Wlau')]//button[contains(.,'Исполнены')]//ancestor::div[contains(@class,'MenuFilters__menuFiltersItem--2Wlau')]")
@@ -16,11 +18,11 @@ public class PP extends Page {
 
 
   public void clickGroupingDone() {
-    groupingDone.click();
+    new WebDriverWait(getDriver(),10).until(ExpectedConditions.elementToBeClickable(groupingDone)).click();
   }
 
     public void clickPPDone() {
-    ppDone.click();
+    new WebDriverWait(getDriver(),10).until(ExpectedConditions.elementToBeClickable(ppDone)).click();
   }
 
   public void DoubleClick(WebElement ppDone) {
@@ -28,8 +30,9 @@ public class PP extends Page {
     builder.doubleClick(ppDone).build().perform();
   }
 
-  public void clickInfoBank() {
-    infoBank.click();
+  public InfoBank clickInfoBank() {
+    new WebDriverWait(getDriver(),10).until(ExpectedConditions.elementToBeClickable(infoBank)).click();
+    return new InfoBank();
   }
 
 }

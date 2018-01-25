@@ -2,9 +2,6 @@ import org.junit.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.*;
-
-import java.util.concurrent.TimeUnit;
-
 import static pages.Page.getDriver;
 
 public class InfoBankTest {
@@ -19,24 +16,16 @@ public class InfoBankTest {
   public void Test1() {
     LoginPage loginPage = new LoginPage();
     HomePage homePage = loginPage.Login(user);
-    homePage.openPagePP();
-    PP pp = new PP();
-    try {
-      TimeUnit.SECONDS.sleep(3);
-    } catch (Exception ex) {
-      ex.getStackTrace();
-    }
-
+    PP pp = homePage.openPagePP();
     pp.clickGroupingDone();
     pp.clickPPDone();
     pp.DoubleClick(pp.ppDone);
-    pp.clickInfoBank();
-    InfoBank infoBank = new InfoBank();
+    InfoBank infoBank = pp.clickInfoBank();
 
-    Assert.assertEquals("02.09.2017",infoBank.getValueReceivingDocument());
-    Assert.assertEquals("03.09.2017", infoBank.getValueExecutionDocument());
-    Assert.assertEquals("kate", infoBank.getValueMessageFromBank());
-    Assert.assertEquals("Ф. ОПЕРУ БАНКА ВТБ (ПАО) В САНКТ-ПЕТЕРБУРГЕ", infoBank.getValueDepartmentReceivedDocument());
+    Assert.assertEquals("02.09.2017",infoBank.getValueReceivingDocument("//input[@value = '02.09.2017']"));
+    Assert.assertEquals("03.09.2017", infoBank.getValueExecutionDocument("//input[@value = '03.09.2017']"));
+    Assert.assertEquals("kate", infoBank.getValueMessageFromBank("//textarea"));
+    Assert.assertEquals("Ф. ОПЕРУ БАНКА ВТБ (ПАО) В САНКТ-ПЕТЕРБУРГЕ", infoBank.getValueDepartmentReceivedDocument("//input[@value = 'Ф. ОПЕРУ БАНКА ВТБ (ПАО) В САНКТ-ПЕТЕРБУРГЕ']"));
 
   }
 }

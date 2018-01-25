@@ -18,7 +18,8 @@ public class HomePage extends Page {
     return new CreatePP();
   }
 
-  public void openPagePP() {
-    pp.click();
+  public PP openPagePP() {
+    new WebDriverWait(getDriver(),10).until(ExpectedConditions.elementToBeClickable(pp)).click();
+    return new PP();
   }
 }
