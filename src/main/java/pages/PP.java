@@ -17,19 +17,23 @@ public class PP extends Page {
   private WebElement infoBank;
 
 
+  // Выбор групировки "Исполнены"
   public void clickGroupingDone() {
     new WebDriverWait(getDriver(),10).until(ExpectedConditions.elementToBeClickable(groupingDone)).click();
   }
 
-    public void clickPPDone() {
+  //Переход к документам с групированным по "Исполнены"
+  public void clickPPDone() {
     new WebDriverWait(getDriver(),10).until(ExpectedConditions.elementToBeClickable(ppDone)).click();
   }
 
+  //Двойной клик
   public void DoubleClick(WebElement ppDone) {
     Actions builder = new Actions(getDriver());
     builder.doubleClick(ppDone).build().perform();
   }
 
+  //Переход к Информации из банка
   public InfoBank clickInfoBank() {
     new WebDriverWait(getDriver(),10).until(ExpectedConditions.elementToBeClickable(infoBank)).click();
     return new InfoBank();

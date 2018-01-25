@@ -15,6 +15,7 @@ public class IndicatorsStatusPP extends Page {
   @FindBy(xpath = "//button[contains(., 'Все')]")
   private WebElement pagingAll;
 
+  //Выбор строки из списка
   public void clickRow(String rowNumber) {
     List<WebElement> rows = getDriver().findElements(By.xpath("//div[contains(@class,'table__row')]"));
     boolean find = false;
@@ -30,9 +31,13 @@ public class IndicatorsStatusPP extends Page {
       }
     }
   }
+
+  //Кнопка "Применить"
   public void clickButtonApply() {
     buttonApply.click();
   }
+
+  //Кнопка "Все"
   public void clickPagingAll() {
     pagingAll.click();
     new WebDriverWait(getDriver(), 10).until(ExpectedConditions.attributeContains(pagingAll, "class", "Active"));

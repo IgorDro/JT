@@ -13,11 +13,13 @@ public class HomePage extends Page {
   @FindBy(xpath = "//a[contains(text(),'Расчеты в рублях')]")
   private WebElement pp;
 
+  //Создать ПП
   public CreatePP createNewPP() {
     new WebDriverWait(getDriver(),10).until(ExpectedConditions.elementToBeClickable(createPP)).click();
     return new CreatePP();
   }
 
+  //Переход в "Расчеты в рублях"
   public PP openPagePP() {
     new WebDriverWait(getDriver(),10).until(ExpectedConditions.elementToBeClickable(pp)).click();
     return new PP();

@@ -67,6 +67,7 @@ public class CreatePP extends Page {
     savePP.click();
   }
 
+  //Проверка срабатывания контроля, окно с контролем на которм сработал контроль
   public boolean flag(String xpathExpression) {
     boolean flag = true;
     try{
