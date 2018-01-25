@@ -1,10 +1,12 @@
 import org.junit.Assert;
-import org.openqa.selenium.Keys;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.*;
 
 import static pages.Page.getDriver;
+
+
+//Автотесты для https://jiraeu.epam.com/browse/VTBDBOTLAB-72
 
 public class InnTest {
 

@@ -4,6 +4,8 @@ import org.testng.annotations.Test;
 import pages.*;
 import static pages.Page.getDriver;
 
+//Автотесты для https://jiraeu.epam.com/browse/VTBDBOTLAB-339
+
 public class InfoBankTest {
   User user = new User("1111111111", "1111111111");
 
