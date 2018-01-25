@@ -19,12 +19,6 @@ public class CreatePP extends Page {
   @FindBy (xpath = "//.//div[text()='Сохранить']")
   private WebElement savePP;
 
-//  @FindBy(xpath = "//div[contains(text(), 'Поле инн плательщика обязательно для заполнения')]")
-//  private WebElement controlINN;
-
-//  @FindBy(xpath = "//div[contains(text(), 'ИНН плательщика не прошел проверку контрольного числа')]")
-//  private WebElement controlINN1;
-
   //Кликаем по полю ИНН\КИО
   public void clickINN () {
     inn.click();
@@ -40,12 +34,16 @@ public class CreatePP extends Page {
     inn.sendKeys(innNumber);
   }
 
+  //Вставка горячих клавиш
   public void sendHotKey(Keys hotkey){
     inn.sendKeys(hotkey);
   }
 
-  public void sendChordKeys(CharSequence[] charSequences) {
-    inn.sendKeys(Keys.chord(charSequences));
+  //Очищаем поле ИНН/КИО
+  public void clearFieldDelete() {
+    inn.click();
+    inn.sendKeys(Keys.CONTROL, "a");
+    inn.sendKeys(Keys.DELETE);
   }
 
   //Получение значения в поле ИНН\КИО
@@ -60,8 +58,9 @@ public class CreatePP extends Page {
   }
 
   //Открываем форму показатели статуса
-  public void clickIndicatorsStatusPP() {
+  public IndicatorsStatusPP clickIndicatorsStatusPP() {
     indicatorsStatusPP.click();
+    return new IndicatorsStatusPP();
   }
   //Жмем "Сохранить"
   public void clickSavePP() {

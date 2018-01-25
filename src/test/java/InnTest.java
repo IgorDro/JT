@@ -28,8 +28,7 @@ public class InnTest {
   public void Test1() {
     LoginPage loginPage = new LoginPage();
     HomePage homePage = loginPage.Login(user);
-    homePage.createNewPP();
-    CreatePP createPP = new CreatePP();
+    CreatePP createPP = homePage.createNewPP();
     createPP.clickINN();
     Assert.assertEquals("7728124050", createPP.innValue());
   }
@@ -39,15 +38,13 @@ public class InnTest {
   public void Test2() {
     LoginPage loginPage = new LoginPage();
     HomePage homePage = loginPage.Login(user);
-    homePage.createNewPP();
-    CreatePP createPP = new CreatePP();
+    CreatePP createPP = homePage.createNewPP();
     createPP.clickINN();
     createPP.clickPaymentBudget();
-    createPP.clickIndicatorsStatusPP();
-    IndicatorsStatusPP indicatorsStatusPP = new IndicatorsStatusPP();
+    IndicatorsStatusPP indicatorsStatusPP = createPP.clickIndicatorsStatusPP();
     indicatorsStatusPP.clickRow("03");
     indicatorsStatusPP.clickButtonApply();
-    createPP.clearINN();
+    createPP.clearFieldDelete();
     createPP.sendINN("0");
     createPP.clickSavePP();
     Assert.assertFalse(createPP.flag( "//div[contains(text(), 'ИНН плательщика не прошел проверку контрольного числа')]"));
@@ -58,15 +55,13 @@ public class InnTest {
   public void Test3() {
     LoginPage loginPage = new LoginPage();
     HomePage homePage = loginPage.Login(user);
-    homePage.createNewPP();
-    CreatePP createPP = new CreatePP();
+    CreatePP createPP = homePage.createNewPP();
     createPP.clickINN();
     createPP.clickPaymentBudget();
-    createPP.clickIndicatorsStatusPP();
-    IndicatorsStatusPP indicatorsStatusPP = new IndicatorsStatusPP();
+    IndicatorsStatusPP indicatorsStatusPP = createPP.clickIndicatorsStatusPP();
     indicatorsStatusPP.clickRow("05");
     indicatorsStatusPP.clickButtonApply();
-    createPP.clearINN();
+    createPP.clearFieldDelete();
     createPP.sendINN("0");
     createPP.clickSavePP();
     Assert.assertFalse(createPP.flag( "//div[contains(text(), 'ИНН плательщика не прошел проверку контрольного числа')]"));
@@ -77,15 +72,13 @@ public class InnTest {
   public void Test4() {
     LoginPage loginPage = new LoginPage();
     HomePage homePage = loginPage.Login(user);
-    homePage.createNewPP();
-    CreatePP createPP = new CreatePP();
+    CreatePP createPP = homePage.createNewPP();
     createPP.clickINN();
     createPP.clickPaymentBudget();
-    createPP.clickIndicatorsStatusPP();
-    IndicatorsStatusPP indicatorsStatusPP = new IndicatorsStatusPP();
+    IndicatorsStatusPP indicatorsStatusPP = createPP.clickIndicatorsStatusPP();
     indicatorsStatusPP.clickRow("19");
     indicatorsStatusPP.clickButtonApply();
-    createPP.clearINN();
+    createPP.clearFieldDelete();
     createPP.sendINN("0");
     createPP.clickSavePP();
     Assert.assertFalse(createPP.flag("//div[contains(text(), 'ИНН плательщика не прошел проверку контрольного числа')]"));
@@ -96,16 +89,14 @@ public class InnTest {
   public void Test5() {
     LoginPage loginPage = new LoginPage();
     HomePage homePage = loginPage.Login(user);
-    homePage.createNewPP();
-    CreatePP createPP = new CreatePP();
+    CreatePP createPP = homePage.createNewPP();
     createPP.clickINN();
     createPP.clickPaymentBudget();
-    createPP.clickIndicatorsStatusPP();
-    IndicatorsStatusPP indicatorsStatusPP = new IndicatorsStatusPP();
+    IndicatorsStatusPP indicatorsStatusPP = createPP.clickIndicatorsStatusPP();
     indicatorsStatusPP.clickPagingAll();
     indicatorsStatusPP.clickRow("23");
     indicatorsStatusPP.clickButtonApply();
-    createPP.clearINN();
+    createPP.clearFieldDelete();
     createPP.sendINN("0");
     createPP.clickSavePP();
     Assert.assertFalse(createPP.flag("//div[contains(text(), 'Поле инн плательщика обязательно для заполнения')]"));
@@ -116,11 +107,8 @@ public class InnTest {
   public void Test6() {
     LoginPage loginPage = new LoginPage();
     HomePage homePage = loginPage.Login(user);
-    homePage.createNewPP();
-    CreatePP createPP = new CreatePP();
-    createPP.clickINN();
-    createPP.clearINN();
-    createPP.sendHotKey(Keys.BACK_SPACE);
+    CreatePP createPP = homePage.createNewPP();
+    createPP.clearFieldDelete();
     createPP.sendINN("7702070139");
     createPP.clickSavePP();
     Assert.assertFalse(createPP.flag("//div[contains(text(), 'ИНН плательщика не прошел проверку контрольного числа')]"));
@@ -131,10 +119,8 @@ public class InnTest {
   public void Test7() {
     LoginPage loginPage = new LoginPage();
     HomePage homePage = loginPage.Login(user);
-    homePage.createNewPP();
-    CreatePP createPP = new CreatePP();
-    createPP.clickINN();
-    createPP.clearINN();
+    CreatePP createPP = homePage.createNewPP();
+    createPP.clearFieldDelete();
     createPP.sendINN("563565286576");
     createPP.clickSavePP();
     Assert.assertTrue(createPP.flag("//div[contains(text(), 'ИНН плательщика не прошел проверку контрольного числа')]"));
@@ -145,10 +131,8 @@ public class InnTest {
   public void Test8() {
     LoginPage loginPage = new LoginPage();
     HomePage homePage = loginPage.Login(user);
-    homePage.createNewPP();
-    CreatePP createPP = new CreatePP();
-    createPP.clickINN();
-    createPP.clearINN();
+    CreatePP createPP = homePage.createNewPP();
+    createPP.clearFieldDelete();
     createPP.sendINN("asdfasdf");
     createPP.clickPaymentBudget();
     Assert.assertEquals("", createPP.innValue());
@@ -159,12 +143,10 @@ public class InnTest {
   public void Test9() {
     LoginPage loginPage = new LoginPage();
     HomePage homePage = loginPage.Login(user);
-    homePage.createNewPP();
-    CreatePP createPP = new CreatePP();
-    createPP.clickINN();
-    createPP.clearINN();
+    CreatePP createPP = homePage.createNewPP();
+    createPP.clearFieldDelete();
     createPP.sendINN("5635652865761");
-    createPP.sendHotKey(Keys.ENTER);
     Assert.assertEquals("563565286576", createPP.innValue());
   }
+
 }

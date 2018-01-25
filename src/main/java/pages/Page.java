@@ -17,8 +17,6 @@ public abstract class Page {
     public static WebDriver getDriver() {
       if (driver == null)
         driver = new ChromeDriver();
-
-      driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
       return driver;
   }
 }
