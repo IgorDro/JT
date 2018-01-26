@@ -20,8 +20,8 @@ public class HomePage extends Page {
   }
 
   //Переход в "Расчеты в рублях"
-  public PP openPagePP() {
+  public ScrollerPP openPagePP() {
     new WebDriverWait(getDriver(),10).until(ExpectedConditions.elementToBeClickable(pp)).click();
-    return new PP();
+    return new ScrollerPP();
   }
 }

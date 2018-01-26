@@ -3,6 +3,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.*;
 import static pages.Page.getDriver;
+import static pages.ScrollerPP.ppDone;
 
 //Автотесты для https://jiraeu.epam.com/browse/VTBDBOTLAB-339
 
@@ -16,18 +17,17 @@ public class InfoBankTest {
 
   @Test
   public void Test1() {
-    LoginPage loginPage = new LoginPage();
-    HomePage homePage = loginPage.Login(user);
-    PP pp = homePage.openPagePP();
-    pp.clickGroupingDone();
-    pp.clickPPDone();
-    pp.DoubleClick(pp.ppDone);
-    InfoBank infoBank = pp.clickInfoBank();
+    new LoginPage().Login(user)
+            .openPagePP()
+            .clickGroupingDone()
+            .clickPPDone()
+            .DoubleClick(ppDone)
+            .clickInfoBank();
 
-    Assert.assertEquals("02.09.2017",infoBank.getValueReceivingDocument("//input[@value = '02.09.2017']"));
-    Assert.assertEquals("03.09.2017", infoBank.getValueExecutionDocument("//input[@value = '03.09.2017']"));
-    Assert.assertEquals("kate", infoBank.getValueMessageFromBank("//textarea"));
-    Assert.assertEquals("Ф. ОПЕРУ БАНКА ВТБ (ПАО) В САНКТ-ПЕТЕРБУРГЕ", infoBank.getValueDepartmentReceivedDocument("//input[@value = 'Ф. ОПЕРУ БАНКА ВТБ (ПАО) В САНКТ-ПЕТЕРБУРГЕ']"));
+    Assert.assertEquals("02.09.2017",InfoBank.getValueReceivingDocument("//input[@value = '02.09.2017']"));
+    Assert.assertEquals("03.09.2017", InfoBank.getValueExecutionDocument("//input[@value = '03.09.2017']"));
+    Assert.assertEquals("kate", InfoBank.getValueMessageFromBank("//textarea"));
+    Assert.assertEquals("Ф. ОПЕРУ БАНКА ВТБ (ПАО) В САНКТ-ПЕТЕРБУРГЕ", InfoBank.getValueDepartmentReceivedDocument("//input[@value = 'Ф. ОПЕРУ БАНКА ВТБ (ПАО) В САНКТ-ПЕТЕРБУРГЕ']"));
 
   }
 }

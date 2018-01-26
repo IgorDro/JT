@@ -16,7 +16,7 @@ public class IndicatorsStatusPP extends Page {
   private WebElement pagingAll;
 
   //Выбор строки из списка
-  public void clickRow(String rowNumber) {
+  public IndicatorsStatusPP clickRow(String rowNumber) {
     List<WebElement> rows = getDriver().findElements(By.xpath("//div[contains(@class,'table__row')]"));
     boolean find = false;
     for (WebElement row : rows) {
@@ -30,16 +30,19 @@ public class IndicatorsStatusPP extends Page {
         break;
       }
     }
+    return this;
   }
 
   //Кнопка "Применить"
-  public void clickButtonApply() {
+  public CreatePP clickButtonApply() {
     buttonApply.click();
+    return new CreatePP();
   }
 
   //Кнопка "Все"
-  public void clickPagingAll() {
+  public IndicatorsStatusPP clickPagingAll() {
     pagingAll.click();
     new WebDriverWait(getDriver(), 10).until(ExpectedConditions.attributeContains(pagingAll, "class", "Active"));
+    return this;
   }
 }

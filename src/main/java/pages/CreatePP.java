@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class CreatePP extends Page {
   @FindBy (xpath = "//input[contains(@placeholder,'ИНН/КИО')]")
-  private WebElement inn;
+  private static WebElement inn;
 
   @FindBy (xpath = "//div[@class = 'fieldGroup fieldGroup_collapsable fieldGroup_closed']")
   private WebElement paymentBudget;
@@ -20,41 +20,47 @@ public class CreatePP extends Page {
   private WebElement savePP;
 
   //Кликаем по полю ИНН\КИО
-  public void clickINN () {
+  public CreatePP clickINN () {
     inn.click();
+    return this;
   }
 
   //Очищаем поле ИНН\КИО
-  public void clearINN() {
+  public CreatePP clearINN() {
     inn.clear();
+    return this;
   }
 
   //Вставляем значение в поле ИНН\КИО
-  public void sendINN(String innNumber) {
+  public CreatePP sendINN(String innNumber) {
     inn.sendKeys(innNumber);
+    return this;
   }
 
   //Вставка горячих клавиш
-  public void sendHotKey(Keys hotkey){
+  public CreatePP sendHotKey(Keys hotkey){
     inn.sendKeys(hotkey);
+    return this;
   }
 
   //Очищаем поле ИНН/КИО
-  public void clearFieldDelete() {
+  public CreatePP clearFieldDelete() {
     inn.click();
     inn.sendKeys(Keys.CONTROL, "a");
     inn.sendKeys(Keys.DELETE);
+    return this;
   }
 
   //Получение значения в поле ИНН\КИО
-  public String innValue() {
+  public static String innValue() {
     String innValue = inn.getAttribute("value");
     return innValue;
   }
 
   //Раскрываем блок "Платеж в бюджет РФ"
-  public void clickPaymentBudget() {
+  public CreatePP clickPaymentBudget() {
     paymentBudget.click();
+    return this;
   }
 
   //Открываем форму показатели статуса
@@ -63,12 +69,13 @@ public class CreatePP extends Page {
     return new IndicatorsStatusPP();
   }
   //Жмем "Сохранить"
-  public void clickSavePP() {
+  public CreatePP clickSavePP() {
     savePP.click();
+    return this;
   }
 
   //Проверка срабатывания контроля, окно с контролем на которм сработал контроль
-  public boolean flag(String xpathExpression) {
+  public static boolean flag(String xpathExpression) {
     boolean flag = true;
     try{
       WebElement controlINN = getDriver().findElement((By.xpath(xpathExpression)));

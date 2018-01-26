@@ -6,37 +6,39 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class PP extends Page {
-  @FindBy (xpath = "//div[contains(@class,'MenuFilters__menuFiltersItem--2Wlau')]//button[contains(.,'Исполнены')]//ancestor::div[contains(@class,'MenuFilters__menuFiltersItem--2Wlau')]")
+public class ScrollerPP extends Page {
+  @FindBy (xpath = "//button[contains(.,'Исполнены')]")
   private WebElement groupingDone;
 
   @FindBy (xpath = "//div[contains(@class,'table__row')]//span[contains(.,'1109')]//ancestor::div[contains(@class,'table__row')]")
-  public WebElement ppDone;
+  public static WebElement ppDone;
 
-  @FindBy (xpath = "//span[contains(.,'Информация из банка')]")
+  @FindBy(xpath = "//button[contains(.,'Информация из банка')]")
   private WebElement infoBank;
 
 
   // Выбор групировки "Исполнены"
-  public void clickGroupingDone() {
+  public ScrollerPP clickGroupingDone() {
     new WebDriverWait(getDriver(),10).until(ExpectedConditions.elementToBeClickable(groupingDone)).click();
+    return new ScrollerPP();
   }
 
   //Переход к документам с групированным по "Исполнены"
-  public void clickPPDone() {
+  public ScrollerPP clickPPDone() {
     new WebDriverWait(getDriver(),10).until(ExpectedConditions.elementToBeClickable(ppDone)).click();
+    return this;
   }
 
   //Двойной клик
-  public void DoubleClick(WebElement ppDone) {
+  public ScrollerPP DoubleClick(WebElement ppDone) {
     Actions builder = new Actions(getDriver());
     builder.doubleClick(ppDone).build().perform();
+    return this;
   }
 
-  //Переход к Информации из банка
-  public InfoBank clickInfoBank() {
+  //Переход к информации из банка
+  public ScrollerPP clickInfoBank() {
     new WebDriverWait(getDriver(),10).until(ExpectedConditions.elementToBeClickable(infoBank)).click();
-    return new InfoBank();
+    return this;
   }
-
 }
