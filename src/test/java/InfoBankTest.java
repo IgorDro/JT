@@ -16,7 +16,7 @@ public class InfoBankTest {
   }
 
   @Test
-  public void Test1() {
+  public void test1() {
     new LoginPage().Login(user)
             .openPagePP()
             .clickGroupingDone()

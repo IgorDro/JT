@@ -26,7 +26,7 @@ public class InnTest {
 
   //Перейти к заполнению ПП.
   @Test
-  public void Test1() {
+  public void test1() {
     new LoginPage().Login(user)
             .createNewPP()
             .clickINN();
@@ -35,7 +35,7 @@ public class InnTest {
 
   //Установить показатель статуса налогоплательщика = 03, установить значение поля "ИНН плательщика" = 0, сохранить ПП
   @Test
-  public void Test2() {
+  public void test2() {
     new LoginPage().Login(user)
             .createNewPP()
             .clickINN()
@@ -51,7 +51,7 @@ public class InnTest {
 
   //Установить показатель статуса налогоплательщика = 05, установить значение поля "ИНН плательщика" = 0, сохранить ПП
   @Test
-  public void Test3() {
+  public void test3() {
     new LoginPage().Login(user)
             .createNewPP()
             .clickINN()
@@ -67,7 +67,7 @@ public class InnTest {
 
   //Установить показатель статуса налогоплательщика = 19, установить значение поля "ИНН плательщика" = 0, сохранить ПП
   @Test
-  public void Test4() {
+  public void test4() {
     new LoginPage().Login(user)
             .createNewPP()
             .clickINN()
@@ -83,7 +83,7 @@ public class InnTest {
 
   //Установить показатель статуса налогоплательщика любым, кроме 03; 05; 19, установить значение поля "ИНН плательщика" = 0, сохранить ПП
   @Test
-  public void Test5() {
+  public void test5() {
     new LoginPage().Login(user)
             .createNewPP()
             .clickINN()
@@ -100,7 +100,7 @@ public class InnTest {
 
   //Авторизоваться в системе от имени организации, ввести "ИНН плательщика" в 10 знаков., сохранить ПП
   @Test
-  public void Test6() {
+  public void test6() {
     new LoginPage().Login(user)
             .createNewPP()
             .clearFieldDelete()
@@ -111,7 +111,7 @@ public class InnTest {
 
   ////Авторизоваться в системе от имени организации, ввести "ИНН плательщика" в 12 знаков., сохранить ПП
   @Test
-  public void Test7() {
+  public void test7() {
     new LoginPage().Login(user)
             .createNewPP()
             .clearFieldDelete()
@@ -122,7 +122,7 @@ public class InnTest {
 
   //Ввести в поле ИНН что-то, кроме цифр
   @Test
-  public void Test8() {
+  public void test8() {
     new LoginPage().Login(user)
             .createNewPP()
             .clearFieldDelete()
@@ -133,7 +133,7 @@ public class InnTest {
 
   //Ввести в поле ИНН > 12 цифр
   @Test
-  public void Test9() {
+  public void test9() {
     new LoginPage().Login(user)
             .createNewPP()
             .clearFieldDelete()
