@@ -5,7 +5,7 @@ import pages.*;
 
 import static pages.Page.getDriver;
 
-
+//проверяем можно ли закомитить
 //Автотесты для https://jiraeu.epam.com/browse/VTBDBOTLAB-72
 
 public class InnTest {
