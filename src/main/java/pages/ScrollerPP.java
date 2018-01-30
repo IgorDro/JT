@@ -10,7 +10,7 @@ public class ScrollerPP extends Page {
   @FindBy (xpath = "//button[contains(.,'Исполнены')]")
   private WebElement groupingDone;
 
-  @FindBy (xpath = "//div[contains(@class,'table__row')]//span[contains(.,'1109')]//ancestor::div[contains(@class,'table__row')]")
+  @FindBy (xpath = "//div[contains(@class,'table__row')]//div[contains(.,'1109')]//ancestor::div[contains(@class,'table__row')]")
   public static WebElement ppDone;
 
   @FindBy(xpath = "//button[contains(.,'Информация из банка')]")

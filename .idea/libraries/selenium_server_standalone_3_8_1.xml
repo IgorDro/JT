@@ -3,7 +3,9 @@
     <CLASSES>
       <root url="jar://C:/Java/selenium-server-standalone-3.8.1.jar!/" />
     </CLASSES>
-    <JAVADOC />
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/Desktop/allure-maven-plugin-2.6-javadoc.jar!/" />
+    </JAVADOC>
     <SOURCES />
   </library>
 </component>
