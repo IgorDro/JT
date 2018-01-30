@@ -2,11 +2,13 @@ import org.junit.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.*;
+import ru.yandex.qatools.allure.annotations.Title;
+
 import static pages.Page.getDriver;
 import static pages.ScrollerPP.ppDone;
 
 //Автотесты для https://jiraeu.epam.com/browse/VTBDBOTLAB-339
-
+@Title("Проверка полей формы 'Информация из банка'")
 public class InfoBankTest {
   User user = new User("1111111111", "1111111111");
 
@@ -15,6 +17,7 @@ public class InfoBankTest {
     getDriver().get("http://stand.vtb.jtcc.ru:16006/");
   }
 
+  @Title("Проверка полей формы")
   @Test
   public void test1() {
     new LoginPage().Login(user)

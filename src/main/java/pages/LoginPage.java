@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.yandex.qatools.allure.annotations.Step;
 
 
 public class LoginPage extends Page {
@@ -18,7 +19,7 @@ public class LoginPage extends Page {
   @FindBy(xpath = "//button[contains(text(),'Войти')]")
   private WebElement submitButton;
 
-
+  @Step("Аутентификация пользателем {0}")
   public HomePage Login(User user) {
     loginField.click();
     loginField.clear();

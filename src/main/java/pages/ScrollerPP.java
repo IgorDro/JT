@@ -5,6 +5,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.yandex.qatools.allure.annotations.Step;
 
 public class ScrollerPP extends Page {
   @FindBy (xpath = "//button[contains(.,'Исполнены')]")
@@ -17,26 +18,26 @@ public class ScrollerPP extends Page {
   private WebElement infoBank;
 
 
-  // Выбор групировки "Исполнены"
+  @Step("Выбор групировки 'Исполнены'")
   public ScrollerPP clickGroupingDone() {
     new WebDriverWait(getDriver(),10).until(ExpectedConditions.elementToBeClickable(groupingDone)).click();
     return new ScrollerPP();
   }
 
-  //Переход к документам с групированным по "Исполнены"
+  @Step("Переход к документам с групированным по 'Исполнены'")
   public ScrollerPP clickPPDone() {
     new WebDriverWait(getDriver(),10).until(ExpectedConditions.elementToBeClickable(ppDone)).click();
     return this;
   }
 
-  //Двойной клик
+  @Step("Двойной клик")
   public ScrollerPP DoubleClick(WebElement ppDone) {
     Actions builder = new Actions(getDriver());
     builder.doubleClick(ppDone).build().perform();
     return this;
   }
 
-  //Переход к информации из банка
+  @Step("Переход к информации из банка")
   public ScrollerPP clickInfoBank() {
     new WebDriverWait(getDriver(),10).until(ExpectedConditions.elementToBeClickable(infoBank)).click();
     return this;

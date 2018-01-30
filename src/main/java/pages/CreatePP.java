@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import ru.yandex.qatools.allure.annotations.Step;
 
 
 public class CreatePP extends Page {
@@ -19,31 +20,31 @@ public class CreatePP extends Page {
   @FindBy (xpath = "//.//div[text()='Сохранить']")
   private WebElement savePP;
 
-  //Кликаем по полю ИНН\КИО
+  @Step ("Кликаем по полю ИНН\\КИО")
   public CreatePP clickINN () {
     inn.click();
     return this;
   }
 
-  //Очищаем поле ИНН\КИО
+  @Step("Очищаем поле ИНН\\КИО")
   public CreatePP clearINN() {
     inn.clear();
     return this;
   }
 
-  //Вставляем значение в поле ИНН\КИО
+  @Step("Вставляем значение в поле ИНН\\КИО")
   public CreatePP sendINN(String innNumber) {
     inn.sendKeys(innNumber);
     return this;
   }
 
-  //Вставка горячих клавиш
+  @Step("Вставка горячих клавиш")
   public CreatePP sendHotKey(Keys hotkey){
     inn.sendKeys(hotkey);
     return this;
   }
 
-  //Очищаем поле ИНН/КИО
+  @Step("Очищаем поле ИНН/КИО")
   public CreatePP clearFieldDelete() {
     inn.click();
     inn.sendKeys(Keys.CONTROL, "a");
@@ -51,30 +52,30 @@ public class CreatePP extends Page {
     return this;
   }
 
-  //Получение значения в поле ИНН\КИО
+  @Step("Получение значения в поле ИНН\\КИО")
   public static String innValue() {
     String innValue = inn.getAttribute("value");
     return innValue;
   }
 
-  //Раскрываем блок "Платеж в бюджет РФ"
+  @Step("Раскрываем блок 'Платеж в бюджет РФ'")
   public CreatePP clickPaymentBudget() {
     paymentBudget.click();
     return this;
   }
 
-  //Открываем форму показатели статуса
+  @Step("Открываем форму показатели статуса")
   public IndicatorsStatusPP clickIndicatorsStatusPP() {
     indicatorsStatusPP.click();
     return new IndicatorsStatusPP();
   }
-  //Жмем "Сохранить"
+  @Step("Жмем 'Сохранить'")
   public CreatePP clickSavePP() {
     savePP.click();
     return this;
   }
 
-  //Проверка срабатывания контроля, окно с контролем на которм сработал контроль
+  @Step("Проверка срабатывания контроля, окно с контролем на которм сработал контроль")
   public static boolean flag(String xpathExpression) {
     boolean flag = true;
     try{

@@ -2,12 +2,14 @@ import org.junit.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.*;
+import ru.yandex.qatools.allure.annotations.Title;
 
 import static pages.Page.getDriver;
 
 //проверяем можно ли закомитить
 //Автотесты для https://jiraeu.epam.com/browse/VTBDBOTLAB-72
 
+@Title("Проверки поля 'ИНН плательщика'")
 public class InnTest {
 
   User user = new User("1111111111", "1111111111");
@@ -17,14 +19,14 @@ public class InnTest {
     getDriver().get("http://stand.vtb.jtcc.ru:16006/");
   }
 
-  //Логинимся
+  @Title("Логинимся")
   @Test
   public void loginTest() {
     new LoginPage().Login(user)
             .createNewPP();
   }
 
-  //Перейти к заполнению ПП.
+  @Title("Перейти к заполнению ПП.")
   @Test
   public void test1() {
     new LoginPage().Login(user)
@@ -33,7 +35,7 @@ public class InnTest {
     Assert.assertEquals("7728124050", CreatePP.innValue());
   }
 
-  //Установить показатель статуса налогоплательщика = 03, установить значение поля "ИНН плательщика" = 0, сохранить ПП
+  @Title("Установить показатель статуса налогоплательщика = 03, установить значение поля \"ИНН плательщика\" = 0, сохранить ПП")
   @Test
   public void test2() {
     new LoginPage().Login(user)
@@ -49,7 +51,7 @@ public class InnTest {
     Assert.assertFalse(CreatePP.flag( "//div[contains(text(), 'ИНН плательщика не прошел проверку контрольного числа')]"));
   }
 
-  //Установить показатель статуса налогоплательщика = 05, установить значение поля "ИНН плательщика" = 0, сохранить ПП
+  @Title("Установить показатель статуса налогоплательщика = 05, установить значение поля \"ИНН плательщика\" = 0, сохранить ПП")
   @Test
   public void test3() {
     new LoginPage().Login(user)
@@ -65,7 +67,7 @@ public class InnTest {
     Assert.assertFalse(CreatePP.flag( "//div[contains(text(), 'ИНН плательщика не прошел проверку контрольного числа')]"));
   }
 
-  //Установить показатель статуса налогоплательщика = 19, установить значение поля "ИНН плательщика" = 0, сохранить ПП
+  @Title("Установить показатель статуса налогоплательщика = 19, установить значение поля \"ИНН плательщика\" = 0, сохранить ПП")
   @Test
   public void test4() {
     new LoginPage().Login(user)
@@ -81,7 +83,7 @@ public class InnTest {
     Assert.assertFalse(CreatePP.flag("//div[contains(text(), 'ИНН плательщика не прошел проверку контрольного числа')]"));
   }
 
-  //Установить показатель статуса налогоплательщика любым, кроме 03; 05; 19, установить значение поля "ИНН плательщика" = 0, сохранить ПП
+  @Title("Установить показатель статуса налогоплательщика любым, кроме 03; 05; 19, установить значение поля \"ИНН плательщика\" = 0, сохранить ПП")
   @Test
   public void test5() {
     new LoginPage().Login(user)
@@ -98,7 +100,7 @@ public class InnTest {
     Assert.assertFalse(CreatePP.flag("//div[contains(text(), 'Поле инн плательщика обязательно для заполнения')]"));
   }
 
-  //Авторизоваться в системе от имени организации, ввести "ИНН плательщика" в 10 знаков., сохранить ПП
+  @Title("Авторизоваться в системе от имени организации, ввести \"ИНН плательщика\" в 10 знаков., сохранить ПП")
   @Test
   public void test6() {
     new LoginPage().Login(user)
@@ -109,7 +111,7 @@ public class InnTest {
     Assert.assertFalse(CreatePP.flag("//div[contains(text(), 'ИНН плательщика не прошел проверку контрольного числа')]"));
   }
 
-  ////Авторизоваться в системе от имени организации, ввести "ИНН плательщика" в 12 знаков., сохранить ПП
+  @Title("Авторизоваться в системе от имени организации, ввести \"ИНН плательщика\" в 12 знаков., сохранить ПП")
   @Test
   public void test7() {
     new LoginPage().Login(user)
@@ -120,7 +122,7 @@ public class InnTest {
     Assert.assertTrue(CreatePP.flag("//div[contains(text(), 'ИНН плательщика не прошел проверку контрольного числа')]"));
   }
 
-  //Ввести в поле ИНН что-то, кроме цифр
+  @Title("Ввести в поле ИНН что-то, кроме цифр")
   @Test
   public void test8() {
     new LoginPage().Login(user)
@@ -131,7 +133,7 @@ public class InnTest {
     Assert.assertEquals("", CreatePP.innValue());
   }
 
-  //Ввести в поле ИНН > 12 цифр
+  @Title("Ввести в поле ИНН > 12 цифр")
   @Test
   public void test9() {
     new LoginPage().Login(user)

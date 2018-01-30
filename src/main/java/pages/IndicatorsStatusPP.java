@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.yandex.qatools.allure.annotations.Step;
+
 import java.util.List;
 
 public class IndicatorsStatusPP extends Page {
@@ -15,7 +17,7 @@ public class IndicatorsStatusPP extends Page {
   @FindBy(xpath = "//button[contains(., 'Все')]")
   private WebElement pagingAll;
 
-  //Выбор строки из списка
+  @Step("Выбор строки из списка")
   public IndicatorsStatusPP clickRow(String rowNumber) {
     List<WebElement> rows = getDriver().findElements(By.xpath("//div[contains(@class,'table__row')]"));
     boolean find = false;
@@ -33,13 +35,13 @@ public class IndicatorsStatusPP extends Page {
     return this;
   }
 
-  //Кнопка "Применить"
+  @Step("Нажатие кнопки 'Применить'")
   public CreatePP clickButtonApply() {
     buttonApply.click();
     return new CreatePP();
   }
 
-  //Кнопка "Все"
+  @Step("Нажатие кнопки 'Все'")
   public IndicatorsStatusPP clickPagingAll() {
     pagingAll.click();
     new WebDriverWait(getDriver(), 10).until(ExpectedConditions.attributeContains(pagingAll, "class", "Active"));
