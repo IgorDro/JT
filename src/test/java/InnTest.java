@@ -17,6 +17,7 @@ public class InnTest {
   @BeforeMethod
   public void setUp() {
     getDriver().get("http://stand.vtb.jtcc.ru:16006/");
+
   }
 
   @Title("Логинимся")
@@ -25,6 +26,7 @@ public class InnTest {
     new LoginPage().Login(user)
             .createNewPP();
   }
+
 
   @Title("Перейти к заполнению ПП.")
   @Test
