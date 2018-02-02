@@ -49,7 +49,7 @@ public abstract class Page {
     String theDefault = "firefox";
 //    Properties props = new Properties();
 //    props = System.getProperties();
-
+//    caps.setBrowserName(props.getProperty("browserName"));
 
 
     if (driver == null)
@@ -58,7 +58,6 @@ public abstract class Page {
 //        caps.setBrowserName(System.getProperty("browserName"));
 //        caps.setCapability("browsername","chrome" );
         caps.setBrowserName(getPropertyOrEnv("browserName", theDefault));
-//        caps.setBrowserName(props.getProperty("browserName"));
         driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), caps);
       } catch (MalformedURLException ex) {
         System.out.println("Что-то пошло не так опять");
@@ -73,24 +72,20 @@ public abstract class Page {
   public static String getPropertyOrEnv(String name, String theDefault) {
     String theValue = System.getProperty(name);
     if (theValue == null) {
-      System.out.println("Свойство не найдено " + name);
+      System.out.println("Свойство не найдено " + theValue);
       theValue = System.getenv(name);
-
       if (theValue == null) {
-        System.out.println("Не удалось найти переменную " + name + " используйте значение по умолчанию " + theDefault);
+        System.out.println("Не удалось найти переменную " + theValue + " используйте значение по умолчанию " + theDefault);
         theValue = theDefault;
       } else {
-        System.out.println("Используйте переменную " + name + " со значением " + theValue);
-      }
+        System.out.println("Используйте переменную " + theValue + " со значением " + theValue);
+    }
+    } else  if (theValue != "chrome" || theValue == "firefox" ) {
+      System.out.println("Такого браузера нет или используется по умолчанию " + theValue + " используйте значение по умолчанию " + theDefault);
+      theValue = theDefault;
     } else {
-      System.out.println("Используйте свойство " + name + " со значением " + theValue);
+      System.out.println("Используйте свойство " + theValue + " со значением " + theValue);
     }
     return theValue;
   }
-
-
-
-//  -DbrowserName=chrome
-//
-//  -browserName 'chrome' -platform 'win10'
 }
