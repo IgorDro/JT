@@ -1,5 +1,6 @@
 package pages;
 
+import jdk.nashorn.internal.objects.NativeString;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -18,7 +19,7 @@ public abstract class Page {
   }
 
   public static WebDriver getDriver() {
-    String theDefault = "FIREFOX";
+    String theDefault = "firefox";
 
     if (driver == null)
       try {
@@ -34,22 +35,23 @@ public abstract class Page {
   }
 
   public static String getPropertyOrEnv(String name, String theDefault) {
-    String theValue = System.getProperty(name);
+    String theValue = toLowerCase(System.getProperty(name));
     if (theValue == null) {
-      System.out.println("Свойство не найдено " + theValue);
+      //System.out.println("Свойство не найдено " + theValue);
       theValue = System.getenv(name);
-      if (theValue == null) {
-        System.out.println("Не удалось найти переменную, используйте значение по умолчанию " + theDefault);
+     // if (theValue == null) {
+     //   System.out.println("Не удалось найти переменную, используйте значение по умолчанию " + theDefault);
         theValue = theDefault;
+    //  } else {
+      //  System.out.println("Используйте переменную, со значением " + theValue);
+     // }
+    } else  if (theValue.equals("chrome")) {
+      //  System.out.println("Используйте свойств, со значением " + theValue);
+      return toLowerCase(theValue);
       } else {
-        System.out.println("Используйте переменную, со значением " + theValue);
+      //  System.out.println("Такого браузера нет или используется по умолчанию, используйте значение по умолчанию " + theDefault);
+        theValue = theDefault;
       }
-    } else if (theValue != "chrome" || theValue == "firefox") {
-      System.out.println("Такого браузера нет или используется по умолчанию, используйте значение по умолчанию " + theDefault);
-      theValue = theDefault;
-    } else {
-      System.out.println("Используйте свойств, со значением " + theValue);
-    }
     return toLowerCase(theValue);
   }
 }
